@@ -21,6 +21,18 @@ Every enduring movement leaves three:
 | **Specification** | How it works | [`STANDARD.md`](STANDARD.md) |
 | **Manifesto** | Why anyone should care | [`MANIFESTO.md`](MANIFESTO.md) |
 
+## A standards effort, not a startup
+
+This is a protocol, not a product. **You do not need AetherTwin to benefit from
+it.** Adopt the language and the standard in your own tools, classrooms,
+research labs, nonprofits, or companies — model-agnostic and OS-agnostic by
+design. If AetherTwin becomes known as the first complete implementation of a
+widely shared framework, that is the win. See [`ADOPTION.md`](ADOPTION.md).
+
+Contributors and agents: read [`AGENTS.md`](AGENTS.md) and run the
+[Constitutional Review](review/CONSTITUTIONAL_REVIEW.md) on every change. The
+standing question is *"Does this still reflect the constitution?"*
+
 ## The four layers
 
 1. **Constitution** — The Steward Protocol. Principles, ethics, design philosophy. *Stable. Enduring. Foundational.*
