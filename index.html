@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Steward Project — An Open Protocol for Collaborative Intelligence</title>
+<meta name="description" content="An open protocol for collaborative intelligence: Constitution, shared Language, Standard, and Manifesto. The soil, not the product." />
+<style>
+  :root{
+    --bg:#070912; --bg2:#0c1124; --panel:#111732; --panel2:#161d3d;
+    --ink:#eef2ff; --muted:#a6b0d4; --faint:#6b76a3;
+    --gold:#e8c66b; --cyan:#5fd0e0; --purple:#a98bff; --teal:#4fd6b0;
+    --line:rgba(169,139,255,.18); --line2:rgba(95,208,224,.14);
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); line-height:1.6; background:var(--bg);
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.5), transparent),
+      radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.4), transparent),
+      radial-gradient(1.5px 1.5px at 40% 80%, rgba(169,139,255,.5), transparent),
+      radial-gradient(1px 1px at 85% 20%, rgba(95,208,224,.5), transparent),
+      radial-gradient(1200px 600px at 50% -10%, #16204a 0%, transparent 60%),
+      linear-gradient(180deg,#070912 0%, #0a0e1e 50%, #070912 100%);
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  a{color:var(--cyan);text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1,h2,h3{line-height:1.2;font-weight:700;letter-spacing:-.01em}
+  section{padding:72px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+  .lead{color:var(--muted);font-size:1.12rem;max-width:62ch}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+    background:rgba(7,9,18,.72);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:18px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);white-space:nowrap}
+  .brand .star{width:18px;height:18px;display:inline-block;
+    background:conic-gradient(from 0deg,var(--gold),var(--cyan),var(--purple),var(--gold));
+    border-radius:50%;box-shadow:0 0 14px rgba(232,198,107,.5)}
+  .navlinks{display:flex;gap:18px;flex-wrap:wrap;font-size:.9rem}
+  .navlinks a{color:var(--muted)} .navlinks a:hover{color:var(--ink);text-decoration:none}
+
+  /* HERO */
+  .hero{padding:104px 0 80px;text-align:center}
+  .hero h1{font-size:clamp(2.3rem,6vw,4.1rem);background:linear-gradient(120deg,#fff 10%,var(--gold) 55%,var(--cyan) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:18px}
+  .hero .sub{color:var(--purple);font-weight:600;letter-spacing:.04em;font-size:1.05rem;margin-bottom:22px}
+  .hero .tag{color:var(--muted);font-size:1.18rem;max-width:48ch;margin:0 auto 30px}
+  .cta{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:700;font-size:.95rem;border:1px solid var(--line);transition:.18s}
+  .btn.primary{background:linear-gradient(120deg,var(--gold),#d9a94e);color:#1a1405;border:none}
+  .btn.primary:hover{filter:brightness(1.08);text-decoration:none}
+  .btn.ghost{color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--cyan);text-decoration:none}
+
+  .banner{margin:30px auto 0;max-width:760px;border:1px solid var(--line2);
+    background:linear-gradient(120deg,rgba(95,208,224,.06),rgba(169,139,255,.06));
+    border-radius:14px;padding:16px 20px;color:var(--ink);font-size:.98rem}
+  .banner b{color:var(--cyan)}
+
+  /* GRID */
+  .grid{display:grid;gap:16px;margin-top:30px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:.18s}
+  .card:hover{border-color:var(--line2);transform:translateY(-2px)}
+  .card h3{font-size:1.02rem;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .card p{color:var(--muted);font-size:.95rem}
+  .num{display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border-radius:8px;
+    background:rgba(232,198,107,.14);color:var(--gold);font-weight:700;font-size:.85rem;flex:none}
+
+  /* LANGUAGE */
+  .term{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .term b{color:var(--cyan);font-size:.98rem}
+  .term span{display:block;color:var(--muted);font-size:.88rem;margin-top:4px}
+
+  /* STANDARD */
+  .badge{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--teal);
+    background:rgba(79,214,176,.08);border-radius:12px;padding:14px 20px;margin:8px 0 24px;color:var(--teal);font-weight:700}
+  .badge .chk{width:20px;height:20px;border-radius:50%;background:var(--teal);color:#06281f;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem}
+  .req{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+  .req:last-child{border-bottom:none}
+  .req .chk{flex:none;margin-top:3px}
+  .req b{color:var(--ink)} .req p{color:var(--muted);font-size:.92rem;margin-top:2px}
+
+  /* QUOTE */
+  blockquote{font-size:1.25rem;color:var(--ink);border-left:3px solid var(--gold);padding:6px 0 6px 22px;margin:18px 0;font-style:italic;max-width:62ch}
+  blockquote .small{display:block;font-size:.9rem;color:var(--faint);font-style:normal;margin-top:10px}
+
+  /* ROADMAP */
+  .phase{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+  .phase:last-child{border-bottom:none}
+  .phase .pn{flex:none;width:34px;height:34px;border-radius:10px;background:var(--panel2);color:var(--purple);
+    font-weight:700;display:flex;align-items:center;justify-content:center}
+  .phase b{color:var(--ink)} .phase p{color:var(--muted);font-size:.92rem;margin-top:2px}
+
+  /* ADOPT */
+  .ctx{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  .ctx b{color:var(--gold)} .ctx p{color:var(--muted);font-size:.9rem;margin-top:4px}
+
+  footer{padding:60px 0 90px;color:var(--faint);font-size:.9rem;text-align:center;border-top:1px solid var(--line)}
+  footer a{color:var(--muted)}
+
+  @media(max-width:760px){
+    .g2,.g3{grid-template-columns:1fr}
+    nav .wrap{height:auto;padding:10px 0}
+    .navlinks{gap:12px;font-size:.82rem}
+    section{padding:54px 0}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="star"></span> The Steward Project</div>
+    <div class="navlinks">
+      <a href="#constitution">Constitution</a>
+      <a href="#language">Language</a>
+      <a href="#standard">Standard</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#adopt">Adopt</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">An Open Protocol for Collaborative Intelligence</div>
+    <h1>The Steward Project</h1>
+    <div class="sub">Better questions. Better decisions. Better future.</div>
+    <p class="tag">A protocol — not a product, not a startup. The soil from which many tools can grow.</p>
+    <div class="cta">
+      <a class="btn primary" href="#constitution">Read the Constitution</a>
+      <a class="btn ghost" href="https://github.com/Mellowambience/steward-protocol" target="_blank" rel="noopener">View the Repository</a>
+    </div>
+    <div class="banner">
+      <b>A standards effort, not a startup.</b> You do not need AetherTwin to benefit. Adopt the protocol in your own tools, classrooms, labs, nonprofits, or companies — model-agnostic and OS-agnostic by design.
+    </div>
+  </div>
+</header>
+
+<section id="constitution">
+  <div class="wrap">
+    <div class="eyebrow">Layer 1 — The Constitution</div>
+    <h2>The Steward Protocol</h2>
+    <p class="lead">A Steward is any system — human or artificial — that increases the wisdom, compassion, curiosity, and capability of those it touches, and leaves a better map than it found. Ten principles, stable and enduring.</p>
+    <div class="grid g2">
+      <div class="card"><h3><span class="num">1</span> Agency</h3><p>The human stays in control. No dark patterns. No manipulation.</p></div>
+      <div class="card"><h3><span class="num">2</span> Transparency</h3><p>Show your work: reasoning, uncertainty, sources, egress. No hidden net.</p></div>
+      <div class="card"><h3><span class="num">3</span> Honesty</h3><p>Admit what you do not know. Uncertainty is a feature, not a flaw.</p></div>
+      <div class="card"><h3><span class="num">4</span> Consent</h3><p>Do not act in secret. Every significant action is visible and reversible.</p></div>
+      <div class="card"><h3><span class="num">5</span> No Extraction</h3><p>Do not farm the human for data, attention, or leverage.</p></div>
+      <div class="card"><h3><span class="num">6</span> Local-first</h3><p>Sovereignty over the self and one's tools, wherever possible.</p></div>
+      <div class="card"><h3><span class="num">7</span> Reflection</h3><p>Every significant task loops back to ask what was learned.</p></div>
+      <div class="card"><h3><span class="num">8</span> Teaching</h3><p>Measure success by how much the human can now do without you.</p></div>
+      <div class="card"><h3><span class="num">9</span> Compassion</h3><p>Care for the person in front of you, especially when they are lost.</p></div>
+      <div class="card"><h3><span class="num">10</span> Long-term</h3><p>Build maps for the people who come next.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="language">
+  <div class="wrap">
+    <div class="eyebrow">Layer 2 — The Language</div>
+    <h2>A shared vocabulary</h2>
+    <p class="lead">Vague words like "AI agent" hide more than they reveal. The Steward Project defines a common language so humans, systems, and organizations mean the same thing.</p>
+    <div class="grid g3">
+      <div class="term"><b>Steward</b><span>Any system that grows wisdom, compassion, capability — and leaves a better map.</span></div>
+      <div class="term"><b>Genesis</b><span>Founding a project, identity, or system with recorded intent.</span></div>
+      <div class="term"><b>Reflection</b><span>The deliberate pause after action to record what was learned.</span></div>
+      <div class="term"><b>Capability</b><span>A specific, demonstrable thing a system can do, stated with limits.</span></div>
+      <div class="term"><b>Trust</b><span>Confidence earned by transparent, repeated, reversible behavior.</span></div>
+      <div class="term"><b>Evidence</b><span>The traceable support for a claim — sources, logs, data.</span></div>
+      <div class="term"><b>Assumption</b><span>A belief held but not yet verified — named so it can be corrected.</span></div>
+      <div class="term"><b>Memory</b><span>Persistent, owner-controlled record of context and lessons.</span></div>
+      <div class="term"><b>Evolution</b><span>Change driven by reflection and evidence, not churn.</span></div>
+      <div class="term"><b>Council</b><span>A convened set of perspectives to deliberate.</span></div>
+      <div class="term"><b>Handoff</b><span>Transferring a task and its full context to another steward.</span></div>
+      <div class="term"><b>Context</b><span>The relevant situation a steward needs to act well.</span></div>
+      <div class="term"><b>Agency</b><span>The human's retained capacity to choose, act, and stop.</span></div>
+      <div class="term"><b>Intent</b><span>The why behind an action, stated plainly.</span></div>
+      <div class="term"><b>Stewardship</b><span>The practice of the ten Principles in motion.</span></div>
+      <div class="term"><b>Constellation</b><span>A connected cluster of ideas, projects, or lessons.</span></div>
+      <div class="term"><b>Atlas</b><span>The living map of all constellations — navigable knowledge.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="standard">
+  <div class="wrap">
+    <div class="eyebrow">Layer 3 — The Standard</div>
+    <h2>Steward Compatible v1.0</h2>
+    <p class="lead">A project earns the badge by meeting six requirements. The badge certifies <em>behavior</em>, not intelligence.</p>
+    <div class="badge"><span class="chk">✓</span> Steward Compatible — Version 1.0</div>
+    <div class="req"><span class="chk">✓</span><div><b>Reflection Loop</b><p>Pause after significant work to record what was learned and what map was left.</p></div></div>
+    <div class="req"><span class="chk">✓</span><div><b>Assumption Tracking</b><p>Name unverified beliefs and invite correction before action.</p></div></div>
+    <div class="req"><span class="chk">✓</span><div><b>Human Override</b><p>Any significant action can be stopped, reversed, or redirected at any time.</p></div></div>
+    <div class="req"><span class="chk">✓</span><div><b>Evidence Logging</b><p>Claims carry traceable support; egress is visible (no hidden net).</p></div></div>
+    <div class="req"><span class="chk">✓</span><div><b>Growth Memory</b><p>Persistent, owner-controlled memory the human can read, export, delete.</p></div></div>
+    <div class="req"><span class="chk">✓</span><div><b>Transparent Uncertainty</b><p>State confidence and label speculation as speculation.</p></div></div>
+  </div>
+</section>
+
+<section id="manifesto">
+  <div class="wrap">
+    <div class="eyebrow">Layer 4 — The Ecosystem &amp; The Manifesto</div>
+    <h2>Many implementations. One shared foundation.</h2>
+    <blockquote>
+      We are not building software. We are cultivating an ecosystem where humans and intelligent tools amplify one another's creativity, judgment, and compassion.
+      <span class="small">AetherTwin is the reference implementation — one beautiful example, not the project itself.</span>
+    </blockquote>
+    <p class="lead">The world measures AI by how smart the model is. That question is a trap. We ask a different one:</p>
+    <blockquote>
+      How well does it help humanity think?
+      <span class="small">Not: "How smart is this model?"</span>
+    </blockquote>
+    <p class="lead">The Stewardship Benchmark measures the rest: agency, transparency, honesty, reflection, teaching, compassion, long-term thinking, uncertainty, documentation, knowledge transfer. Better incentives. Better outcomes.</p>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <div class="eyebrow">The Order Is Deliberate</div>
+    <h2>Roadmap — soil before trees</h2>
+    <div class="phase"><div class="pn">0</div><div><b>Write the Constitution</b><p>The words that outlast us.</p></div></div>
+    <div class="phase"><div class="pn">1</div><div><b>Steward Protocol v1</b><p>This repository: Constitution, Language, Standard, Manifesto.</p></div></div>
+    <div class="phase"><div class="pn">2</div><div><b>The Language</b><p>Disseminate the shared vocabulary; adopt it in our own work.</p></div></div>
+    <div class="phase"><div class="pn">3</div><div><b>Steward Compatible</b><p>Badge program + public self-assessments.</p></div></div>
+    <div class="phase"><div class="pn">4</div><div><b>Reference Architecture</b><p>AetherTwin implements the protocol; Fairy OS, Genesis follow.</p></div></div>
+    <div class="phase"><div class="pn">5</div><div><b>Living Atlas</b><p>Explorable knowledge — ideas as places, projects as stars.</p></div></div>
+    <div class="phase"><div class="pn">6</div><div><b>Stewardship Benchmark</b><p>Measure stewardship, not IQ.</p></div></div>
+    <div class="phase"><div class="pn">7</div><div><b>The Guild</b><p>A living workshop. Apprentices become peers.</p></div></div>
+    <div class="phase"><div class="pn">8</div><div><b>Steward Foundation</b><p>A nonprofit: open governance, community voting, independent of any company.</p></div></div>
+  </div>
+</section>
+
+<section id="adopt">
+  <div class="wrap">
+    <div class="eyebrow">Adopt</div>
+    <h2>You do not need AetherTwin</h2>
+    <p class="lead">The protocol is model-agnostic and OS-agnostic. Adopt it in your own context — no vendor account required.</p>
+    <div class="grid g3">
+      <div class="ctx"><b>Classroom</b><p>Teach the vocabulary. Run the Reflection Loop on student work.</p></div>
+      <div class="ctx"><b>Research lab</b><p>Log assumptions and evidence. Keep human override on every step.</p></div>
+      <div class="ctx"><b>Nonprofit</b><p>Default to local-first and no-extraction. Make egress visible.</p></div>
+      <div class="ctx"><b>Company</b><p>Use "Steward Compatible" as an internal quality bar, vendor-independent.</p></div>
+      <div class="ctx"><b>Your own tool</b><p>Any model, any OS. The protocol is agnostic on purpose.</p></div>
+      <div class="ctx"><b>Community</b><p>Speak the language. Build the soil others grow from.</p></div>
+    </div>
+    <p class="lead" style="margin-top:28px">Start with the words. <a href="https://github.com/Mellowambience/steward-protocol" target="_blank" rel="noopener">Read the full repository →</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    The Steward Project — an open protocol for collaborative intelligence.<br/>
+    Prose shared under CC BY 4.0 · Code under MIT · <a href="https://github.com/Mellowambience/steward-protocol" target="_blank" rel="noopener">github.com/Mellowambience/steward-protocol</a><br/><br/>
+    Steward today. Better tomorrow.
+  </div>
+</footer>
+
+</body>
+</html>
