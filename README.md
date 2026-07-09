@@ -21,6 +21,12 @@ Every enduring movement leaves three:
 | **Specification** | How it works | [`STANDARD.md`](STANDARD.md) |
 | **Manifesto** | Why anyone should care | [`MANIFESTO.md`](MANIFESTO.md) |
 
+## Website
+
+The protocol has a human-readable face: **https://mellowambience.github.io/steward-protocol/**
+
+No login. No AI. No demos. Just the ideas.
+
 ## A standards effort, not a startup
 
 This is a protocol, not a product. **You do not need AetherTwin to benefit from
